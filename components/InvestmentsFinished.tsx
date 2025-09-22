@@ -17,7 +17,6 @@ interface Investment {
 
 const InvestmentsFinished: React.FC = () => {
     const [selectedInvestment, setSelectedInvestment] = useState<Investment | null>(null);
-    const [mapView, setMapView] = useState<'map' | 'satellite'>('map');
 
     const investments: Investment[] = [
         {
@@ -83,48 +82,29 @@ const InvestmentsFinished: React.FC = () => {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.contaxiner}>
             <div className={styles.header}>
                 <h1 className={styles.title}>Radar: Getätigte Investitionen</h1>
             </div>
 
-            <div className={styles.mapContainer}>
-                <div className={styles.mapControls}>
-                    <button
-                        className={`${styles.controlButton} ${mapView === 'map' ? styles.active : ''}`}
-                        onClick={() => setMapView('map')}
-                    >
-                        Map
-                    </button>
-                    <button
-                        className={`${styles.controlButton} ${mapView === 'satellite' ? styles.active : ''}`}
-                        onClick={() => setMapView('satellite')}
-                    >
-                        Satellite
-                    </button>
-                </div>
+            <div className={styles.mapSection}>
+                <div className={styles.mapContainer}>
 
-                <div className={`${styles.map} ${mapView === 'satellite' ? styles.satelliteView : ''}`}>
-                    {investments.map((investment) => (
-                        <button
-                            key={investment.id}
-                            className={styles.investmentMarker}
-                            style={{
-                                left: `${investment.position.x}%`,
-                                top: `${investment.position.y}%`,
-                            }}
-                            onClick={() => openModal(investment)}
-                            title={investment.title}
-                        >
-                            <span className={styles.markerIcon}>📍</span>
-                        </button>
-                    ))}
-
-                    <div className={styles.mapAttribution}>
-                        <span>© Google</span>
+                    {/* Google Maps IFrame Embed für Rüdesheim am Rhein mit Zoom 10 */}
+                    <div className={styles.mapPlaceholder}>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13101.042000708707!2d7.9253!3d49.9787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1695490400000!5m2!1sde!2sde"
+                            width="100%"
+                            height="450"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
                     </div>
                 </div>
             </div>
+
 
             <div className={styles.investmentsList}>
                 {investments.map((investment) => (

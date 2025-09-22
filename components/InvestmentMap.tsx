@@ -79,30 +79,23 @@ const InvestmentMap: React.FC = () => {
 
             <div className={styles.mapSection}>
                 <div className={styles.mapContainer}>
-                    <div className={styles.mapControls}>
-                        <button className={styles.mapControlActive}>Map</button>
-                        <button className={styles.mapControl}>Satellite</button>
-                    </div>
 
-                    {/* Placeholder für Google Maps */}
+                    {/* Google Maps IFrame Embed für Rüdesheim am Rhein mit Zoom 10 */}
                     <div className={styles.mapPlaceholder}>
-                        <div className={styles.mapBackground}>
-                            <div className={styles.mapPin} style={{top: '35%', left: '60%'}}>
-                                📍
-                            </div>
-                            <div className={styles.mapPin} style={{top: '40%', left: '65%'}}>
-                                📍
-                            </div>
-                            <div className={styles.mapLabels}>
-                                <span className={styles.countryLabel} style={{top: '60%', left: '30%'}}>France</span>
-                                <span className={styles.countryLabel} style={{top: '45%', left: '70%'}}>Germany</span>
-                                <span className={styles.countryLabel} style={{top: '25%', left: '50%'}}>Belgium</span>
-                                <span className={styles.countryLabel} style={{top: '70%', left: '65%'}}>Switzerland</span>
-                            </div>
-                        </div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13101.042000708707!2d7.9253!3d49.9787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sde!4v1695490400000!5m2!1sde!2sde"
+                            width="100%"
+                            height="450"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
                     </div>
                 </div>
             </div>
+
+
 
             <div className={styles.investmentsList}>
                 {investments.map(investment => (
