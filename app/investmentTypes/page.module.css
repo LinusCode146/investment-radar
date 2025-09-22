@@ -1,0 +1,378 @@
+/* PublicInvestments.module.css */
+
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4a6fa5 0%, #5a7fb8 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 3rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .main {
+        padding: 3rem 1.5rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .iconContainer {
+        gap: 0.75rem;
+    }
+
+    .icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .categoryTitle {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 2rem 1rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .main {
+        padding: 2rem 1rem;
+    }
+
+    .card {
+        padding: 1.25rem;
+    }
+}
+
+.header {
+    background: linear-gradient(135deg, #4a6fa5 0%, #5a7fb8 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+.main {
+    background: #f8f9fa;
+    padding: 4rem 2rem;
+    min-height: calc(100vh - 300px);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: #4a6fa5;
+}
+
+.education {
+    background: #4a6fa5;
+}
+
+.publicSafety {
+    background: #4a6fa5;
+}
+
+.infrastructure {
+    background: #4a6fa5;
+}
+
+.healthcare {
+    background: #4a6fa5;
+}
+
+.environment {
+    background: #4a6fa5;
+}
+
+.transportation {
+    background: #4a6fa5;
+}
+
+.categoryTitle {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+}
+
+.description {
+    color: #718096;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+}
+
+.examples {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+}
+
+.examplesTitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.examplesList {
+    color: #4a5568;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Transparency Section */
+.transparencySection {
+    background: #f8f9fa;
+    padding: 4rem 2rem;
+}
+
+.transparencyContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.transparencyTitle {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    text-align: center;
+    margin: 0 0 4rem 0;
+}
+
+.transparencyGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.transparencyCard {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.transparencyIcon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 2rem auto;
+}
+
+.accountabilityIcon {
+    background: #48bb78;
+}
+
+.engagementIcon {
+    background: #4a6fa5;
+}
+
+.outcomesIcon {
+    background: #48bb78;
+}
+
+.transparencyCardTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+}
+
+.transparencyCardDescription {
+    font-size: 1rem;
+    color: #718096;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* CTA Section */
+.ctaSection {
+    background: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.ctaContainer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ctaTitle {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 1.5rem 0;
+}
+
+.ctaDescription {
+    font-size: 1.125rem;
+    color: #718096;
+    line-height: 1.6;
+    margin: 0 0 3rem 0;
+}
+
+.ctaButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.primaryButton {
+    background: #4a6fa5;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    min-width: 250px;
+}
+
+.primaryButton:hover {
+    background: #3d5a8a;
+}
+
+.secondaryButton {
+    background: transparent;
+    color: #4a6fa5;
+    padding: 1rem 2rem;
+    border: 2px solid #4a6fa5;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 250px;
+}
+
+.secondaryButton:hover {
+    background: #4a6fa5;
+    color: white;
+}
+
+/* Additional Responsive Design for New Sections */
+@media (min-width: 640px) {
+    .ctaButtons {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .transparencyTitle,
+    .ctaTitle {
+        font-size: 1.875rem;
+    }
+
+    .transparencySection,
+    .ctaSection {
+        padding: 3rem 1.5rem;
+    }
+
+    .transparencyGrid {
+        gap: 2rem;
+    }
+
+    .transparencyIcon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .transparencyCardTitle {
+        font-size: 1.25rem;
+    }
+
+    .ctaDescription {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .transparencyTitle,
+    .ctaTitle {
+        font-size: 1.5rem;
+    }
+
+    .transparencySection,
+    .ctaSection {
+        padding: 2rem 1rem;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        min-width: 200px;
+        padding: 0.875rem 1.5rem;
+    }
+}

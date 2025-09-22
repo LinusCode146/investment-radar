@@ -1,0 +1,321 @@
+/* DataManagement.module.css */
+
+.container {
+    background: #f8f9fa;
+    padding: 4rem 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #4a6fa5;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    color: #718096;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.subtitle p {
+    margin: 0 0 0.5rem 0;
+}
+
+.subtitle p:last-child {
+    margin: 0;
+}
+
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.cardIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cardIcon::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: white;
+    position: absolute;
+}
+
+/* Card Icon Styles */
+.location {
+    background: #4a6fa5;
+}
+
+.location::before {
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'%3E%3C/path%3E%3Ccircle cx='12' cy='10' r='3'%3E%3C/circle%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+}
+
+.message {
+    background: #48bb78;
+}
+
+.message::before {
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'%3E%3C/path%3E%3Cpolyline points='22,6 12,13 2,6'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+}
+
+.check {
+    background: #48bb78;
+}
+
+.check::before {
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpolyline points='20,6 9,17 4,12'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+}
+
+.cardDescription {
+    color: #718096;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 2rem 0;
+}
+
+.exportButton {
+    background: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    max-width: 280px;
+}
+
+.exportButton:hover {
+    background: #3d5a8a;
+}
+
+.integrationSection {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.integrationHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.infoIcon {
+    width: 24px;
+    height: 24px;
+    background: #4a6fa5;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.infoIcon::before {
+    content: 'i';
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.integrationTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+}
+
+.integrationDescription {
+    color: #718096;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 3rem 0;
+}
+
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.featureCard {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.featureIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.featureIcon::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: white;
+    position: absolute;
+}
+
+/* Feature Icon Styles */
+.shield {
+    background: #48bb78;
+}
+
+.shield::before {
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+}
+
+.clock {
+    background: #4a6fa5;
+}
+
+.clock::before {
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12,6 12,12 16,14'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+}
+
+.users {
+    background: #4a6fa5;
+}
+
+.users::before {
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='9' cy='7' r='4'%3E%3C/circle%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'%3E%3C/path%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+}
+
+.featureTitle {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #2d3748;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 3rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .header {
+        margin-bottom: 3rem;
+    }
+
+    .cardsGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .card {
+        padding: 2rem 1.5rem;
+    }
+
+    .featuresGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .integrationHeader {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .card {
+        padding: 1.5rem 1rem;
+    }
+
+    .cardIcon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cardIcon::before {
+        width: 20px;
+        height: 20px;
+    }
+
+    .exportButton {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+    }
+}

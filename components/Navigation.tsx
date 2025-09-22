@@ -23,10 +23,10 @@ const InvestmentRadar: React.FC = () => {
 
                     <nav className={styles.navLinks}>
                         <Link href="/" className={styles.navLink}>Home</Link>
-                        <a href="#" className={styles.navLink}>Investment Types</a>
+                        <Link href={"/investmentTypes"} className={styles.navLink}>Investment Types</Link>
                         <Link className={styles.navLink} href={'/contact'}>Contact</Link>
-                        <a href="#" className={styles.navLink}>Mission</a>
-                        <a href="#" className={styles.navLink}>Data</a>
+                        <Link href={"/mission"} className={styles.navLink}>Mission</Link>
+                        <Link href={"/data"} className={styles.navLink}>Data</Link>
                     </nav>
 
                     <div className={styles.authButtons}>
