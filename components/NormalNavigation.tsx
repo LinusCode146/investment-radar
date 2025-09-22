@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './Navigation.module.css';
 import Link from "next/link";
-const InvestmentRadar: React.FC = () => {
+const NormalNavigation: React.FC = () => {
     return (
         <div className={styles.container}>
             {/* Header Navigation */}
@@ -35,32 +35,8 @@ const InvestmentRadar: React.FC = () => {
                     </div>
                 </div>
             </header>
-
-            {/* Hero Section */}
-            <main className={styles.hero}>
-                <div className={styles.heroContent}>
-                    <h1 className={styles.heroTitle}>
-                        Investment Radar:
-                        <br />
-                        Ideen, die ankommen!
-                    </h1>
-                    <p className={styles.heroSubtitle}>
-                        Auf dieser Website kannst du mitgestalten und erhältst Transparenz!
-                    </p>
-                </div>
-            </main>
-
-            <footer className={styles.footer}>
-                <nav className={styles.footerNav}>
-                    <a href="#" className={styles.footerLink}>Home</a>
-                    <a href="#" className={styles.footerLink}>Investitionen im Überblick</a>
-                    <a href="#" className={styles.footerLink}>Unsere Mission</a>
-                    <a href="#" className={styles.footerLink}>Datenanfrage</a>
-                </nav>
-                <div className={styles.footerLine}></div>
-            </footer>
         </div>
     );
 };
 
-export default InvestmentRadar;
+export default NormalNavigation;

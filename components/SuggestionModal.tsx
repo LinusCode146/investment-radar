@@ -20,7 +20,9 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
         title: '',
         description: '',
         type: '',
-        location: ''
+        location: '',
+        name: '',
+        adress: ''
     });
 
     const investmentTypes = [
@@ -110,6 +112,28 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
                             placeholder="Standort"
                             value={formData.location}
                             onChange={(e) => handleInputChange('location', e.target.value)}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Name</label>
+                        <input
+                            type="text"
+                            className={styles.input}
+                            placeholder="Name"
+                            value={formData.location}
+                            onChange={(e) => handleInputChange('name', e.target.value)}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Adresse</label>
+                        <input
+                            type="text"
+                            className={styles.input}
+                            placeholder="Adresse"
+                            value={formData.location}
+                            onChange={(e) => handleInputChange('adress', e.target.value)}
                         />
                     </div>
 

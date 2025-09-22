@@ -1,7 +1,6 @@
 /* InvestmentRadar.module.css */
 
 .container {
-    min-height: 100vh;
     background: linear-gradient(135deg, #4a6fa5 0%, #5a7fb8 50%, #6b8ecb 100%);
     display: flex;
     flex-direction: column;
