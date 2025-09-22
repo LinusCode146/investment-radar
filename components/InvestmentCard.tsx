@@ -2,13 +2,14 @@ import React from 'react';
 import styles from './InvestmentCard.module.css';
 
 interface Investment {
-    id: string;
+    id: number;
     title: string;
     description: string;
     type: string;
     location: string;
     likes: number;
-    author: string;
+    authorName: string;
+    authorAddress: string;
 }
 
 interface InvestmentCardProps {
@@ -39,7 +40,7 @@ const InvestmentCard: React.FC<InvestmentCardProps> = ({ investment, onLike }) =
 
                 <div className={styles.metadata}>
                     <span className={styles.type}>{investment.type}</span>
-                    <span className={styles.author}>von {investment.author}</span>
+                    <span className={styles.author}>von {investment.authorName}</span>
                 </div>
             </div>
 

@@ -8,6 +8,8 @@ interface SuggestionData {
     description: string;
     type: string;
     location: string;
+    authorName: string;
+    authorAddress: string;
 }
 
 interface SuggestionModalProps {
@@ -21,8 +23,8 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
         description: '',
         type: '',
         location: '',
-        name: '',
-        adress: ''
+        authorName: '',
+        authorAddress: ''
     });
 
     const investmentTypes = [
@@ -121,8 +123,8 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
                             type="text"
                             className={styles.input}
                             placeholder="Name"
-                            value={formData.location}
-                            onChange={(e) => handleInputChange('name', e.target.value)}
+                            value={formData.authorName}
+                            onChange={(e) => handleInputChange('authorName', e.target.value)}
                         />
                     </div>
 
@@ -132,8 +134,8 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
                             type="text"
                             className={styles.input}
                             placeholder="Adresse"
-                            value={formData.location}
-                            onChange={(e) => handleInputChange('adress', e.target.value)}
+                            value={formData.authorAddress}
+                            onChange={(e) => handleInputChange('authorAddress', e.target.value)}
                         />
                     </div>
 

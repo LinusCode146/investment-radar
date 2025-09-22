@@ -1,68 +1,126 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './InvestmentMap.module.css';
 import InvestmentCard from './InvestmentCard';
 import SuggestionModal from './SuggestionModal';
 
 interface Investment {
-    id: string;
+    id: number;
     title: string;
     description: string;
     type: string;
     location: string;
     likes: number;
-    author: string;
+    authorName: string;
+    authorAddress: string;
+}
+
+interface NewInvestmentData {
+    title: string;
+    description: string;
+    type: string;
+    location: string;
+    authorName: string;
+    authorAddress: string;
 }
 
 const InvestmentMap: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [investments, setInvestments] = useState<Investment[]>([
-        {
-            id: '1',
-            title: 'Bushaltestelle Johannisberg',
-            description: 'Die Bushaltestelle in Johannisberg an der Schloßheide macht leider keinen guten Eindruck mehr. Teile sind beschädigt, das Dach schützt kaum vor Regen und die Sitzmöglichkeit ist eigentlich nicht mehr nutzbar. Abends fühlt es sich dort sogar ein wenig unsicher an. Es wäre schön, wenn die Haltestelle modernisiert werden könnte. Eine funktionierende Überdachung, etwas Beleuchtung und eine intakte Sitzgelegenheit würden schon viel verändern und den Ort deutlich angenehmer machen.',
-            type: 'Öffentliche Infrastruktur',
-            location: 'Johannisberg',
-            likes: 0,
-            author: 'Bürger'
-        },
-        {
-            id: '2',
-            title: 'test1',
-            description: 'Dieser Inhalt ist nicht leer',
-            type: 'Test',
-            location: 'Test Location',
-            likes: 0,
-            author: 'Test User'
-        },
-        {
-            id: '3',
-            title: 'TEST',
-            description: 'Dieser Inhalt ist nicht leer',
-            type: 'Test',
-            location: 'Test Location',
-            likes: 0,
-            author: 'Test User'
+    const [investments, setInvestments] = useState<Investment[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    // Fetch investments on component mount
+    useEffect(() => {
+        fetchInvestments();
+    }, []);
+
+    const fetchInvestments = async () => {
+        try {
+            setIsLoading(true);
+            setError(null);
+            const response = await fetch('/api/investment');
+
+            if (!response.ok) {
+                throw new Error(`Failed to fetch investments: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            setInvestments(data);
+        } catch (err) {
+            console.error('Error fetching investments:', err);
+            setError(err instanceof Error ? err.message : 'Failed to load investments');
+        } finally {
+            setIsLoading(false);
         }
-    ]);
-
-    const handleAddSuggestion = (newSuggestion: Omit<Investment, 'id' | 'likes' | 'author'>) => {
-        const investment: Investment = {
-            ...newSuggestion,
-            id: Date.now().toString(),
-            likes: 0,
-            author: 'Bürger'
-        };
-        setInvestments([...investments, investment]);
-        setIsModalOpen(false);
     };
 
-    const handleLike = (id: string) => {
-        setInvestments(investments.map(inv =>
-            inv.id === id ? { ...inv, likes: inv.likes + 1 } : inv
-        ));
+    const handleAddSuggestion = async (newSuggestion: NewInvestmentData) => {
+        try {
+            setError(null);
+            const response = await fetch('/api/investment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newSuggestion),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || `Failed to create investment: ${response.statusText}`);
+            }
+
+            const createdInvestment = await response.json();
+            setInvestments([...investments, createdInvestment]);
+            setIsModalOpen(false);
+        } catch (err) {
+            console.error('Error creating investment:', err);
+            setError(err instanceof Error ? err.message : 'Failed to create investment');
+        }
     };
+
+    const handleLike = async (id: number) => {
+        try {
+            const investment = investments.find(inv => inv.id === id);
+            if (!investment) return;
+
+            const updatedData = {
+                likes: investment.likes + 1
+            };
+
+            const response = await fetch(`/api/investment/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to update investment: ${response.statusText}`);
+            }
+
+            const updatedInvestment = await response.json();
+
+            // Update local state
+            setInvestments(investments.map(inv =>
+                inv.id === id ? updatedInvestment : inv
+            ));
+        } catch (err) {
+            console.error('Error updating likes:', err);
+            setError(err instanceof Error ? err.message : 'Failed to update likes');
+        }
+    };
+
+    if (isLoading) {
+        return (
+            <div className={styles.container}>
+                <div className={styles.loadingMessage}>Investitionen werden geladen...</div>
+            </div>
+        );
+    }
 
     return (
         <div className={styles.container}>
@@ -76,6 +134,15 @@ const InvestmentMap: React.FC = () => {
                     Vorschlag hinzufügen
                 </button>
             </header>
+
+            {error && (
+                <div className={styles.errorMessage}>
+                    <p>Fehler: {error}</p>
+                    <button onClick={fetchInvestments} className={styles.retryButton}>
+                        Erneut versuchen
+                    </button>
+                </div>
+            )}
 
             <div className={styles.mapSection}>
                 <div className={styles.mapContainer}>
@@ -98,13 +165,19 @@ const InvestmentMap: React.FC = () => {
 
 
             <div className={styles.investmentsList}>
-                {investments.map(investment => (
-                    <InvestmentCard
-                        key={investment.id}
-                        investment={investment}
-                        onLike={() => handleLike(investment.id)}
-                    />
-                ))}
+                {investments.length === 0 && !isLoading ? (
+                    <div className={styles.emptyMessage}>
+                        Noch keine Investitionsvorschläge vorhanden. Fügen Sie den ersten hinzu!
+                    </div>
+                ) : (
+                    investments.map(investment => (
+                        <InvestmentCard
+                            key={investment.id}
+                            investment={investment}
+                            onLike={() => handleLike(investment.id)}
+                        />
+                    ))
+                )}
             </div>
 
             {isModalOpen && (
