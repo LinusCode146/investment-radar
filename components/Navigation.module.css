@@ -1,0 +1,320 @@
+/* InvestmentRadar.module.css */
+
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4a6fa5 0%, #5a7fb8 50%, #6b8ecb 100%);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styles */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #4a6fa5;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.logoIcon {
+    width: 32px;
+    height: 32px;
+    color: #4a6fa5;
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: 600;
+    list-style: none;
+}
+
+.navLinks {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.navLink {
+    color: #4a6fa5;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navLink:hover {
+    color: #365a8a;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4a6fa5;
+    transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+.authButtons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.loginBtn {
+    background: transparent;
+    color: #4a6fa5;
+    border: 1px solid #4a6fa5;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.loginBtn:hover {
+    background: #4a6fa5;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.signupBtn {
+    background: #4a6fa5;
+    color: white;
+    border: 1px solid #4a6fa5;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(74, 111, 165, 0.3);
+}
+
+.signupBtn:hover {
+    background: #365a8a;
+    border-color: #365a8a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 111, 165, 0.4);
+}
+
+/* Hero Section */
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heroTitle {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: white;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    letter-spacing: -0.02em;
+}
+
+.heroSubtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.6;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Section */
+.footer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: auto;
+}
+
+.footerNav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footerLink {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footerLink:hover {
+    color: white;
+    transform: translateY(-1px);
+}
+
+.footerLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.footerLink:hover::after {
+    width: 100%;
+}
+
+.footerLine {
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    border-radius: 1px;
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .nav {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .navLinks {
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header {
+        padding: 1rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navLinks {
+        gap: 1rem;
+    }
+
+    .navLink {
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    .footerNav {
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .authButtons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .loginBtn,
+    .signupBtn {
+        padding: 0.7rem 2rem;
+        width: 100%;
+        min-width: 120px;
+    }
+
+    .hero {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Animation for smooth entrance */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.heroContent {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.nav {
+    animation: fadeInUp 0.6s ease-out;
+}
