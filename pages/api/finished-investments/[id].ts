@@ -11,39 +11,39 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
         switch (req.method) {
             case "GET":
-                const investment = await prisma.investment.findUnique({
+                const investment = await prisma.investmentFinished.findUnique({
                     where: { id: Number(id) },
                 });
                 if (!investment) return res.status(404).json({ error: "Investment not found" });
                 return res.status(200).json(investment);
-
-            case "PUT":
-                const allowedFields = ["title", "description", "type", "location", "lat", "lng", "likes", "authorName", "authorAdress"];
-                const dataToUpdate: Record<string, any> = {};
-
-                allowedFields.forEach((field) => {
-                    if (req.body[field] !== undefined) {
-                        if (field === "lat" || field === "lng") {
-                            dataToUpdate[field] = parseFloat(req.body[field]);
-                        } else {
-                            dataToUpdate[field] = req.body[field];
-                        }
-                    }
-                });
-
-                if (Object.keys(dataToUpdate).length === 0) {
-                    return res.status(400).json({ error: "No valid fields to update" });
-                }
-
-                const updatedInvestment = await prisma.investment.update({
-                    where: { id: Number(id) },
-                    data: dataToUpdate,
-                });
-
-                return res.status(200).json(updatedInvestment);
+            //
+            // case "PUT":
+            //     const allowedFields = ["title", "description", "type", "location", "lat", "lng", "likes", "authorName", "authorAdress"];
+            //     const dataToUpdate: Record<string, any> = {};
+            //
+            //     allowedFields.forEach((field) => {
+            //         if (req.body[field] !== undefined) {
+            //             if (field === "lat" || field === "lng") {
+            //                 dataToUpdate[field] = parseFloat(req.body[field]);
+            //             } else {
+            //                 dataToUpdate[field] = req.body[field];
+            //             }
+            //         }
+            //     });
+            //
+            //     if (Object.keys(dataToUpdate).length === 0) {
+            //         return res.status(400).json({ error: "No valid fields to update" });
+            //     }
+            //
+            //     const updatedInvestment = await prisma.investment.update({
+            //         where: { id: Number(id) },
+            //         data: dataToUpdate,
+            //     });
+            //
+            //     return res.status(200).json(updatedInvestment);
 
             case "DELETE":
-                await prisma.investment.delete({ where: { id: Number(id) } });
+                await prisma.investmentFinished.delete({ where: { id: Number(id) } });
                 return res.status(204).end();
 
             default:

@@ -10,15 +10,24 @@ interface Investment {
     likes: number;
     authorName: string;
     authorAddress: string;
+    approved: boolean;
 }
 
 interface InvestmentCardProps {
     investment: Investment;
     onLike: () => void;
     hasUserLiked: boolean;
+    isAdmin?: boolean;
+    onApprove?: () => void;
 }
 
-const InvestmentCard: React.FC<InvestmentCardProps> = ({ investment, onLike, hasUserLiked }) => {
+const InvestmentCard: React.FC<InvestmentCardProps> = ({
+    investment,
+    onLike,
+    hasUserLiked,
+    isAdmin,
+    onApprove
+}) => {
     const isLongDescription = investment.description.length > 200;
 
     return (
@@ -64,6 +73,15 @@ const InvestmentCard: React.FC<InvestmentCardProps> = ({ investment, onLike, has
                     {investment.likes > 0 && <span className={styles.likeCount}>{investment.likes}</span>}
                 </button>
             </div>
+            {/* Genehmigen-Button für Admins */}
+            {isAdmin && !investment.approved && (
+                <button
+                    className={styles.approveButton}
+                    onClick={onApprove}
+                >
+                    Genehmigen
+                </button>
+            )}
         </div>
     );
 };

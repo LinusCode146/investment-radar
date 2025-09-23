@@ -11,20 +11,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             case "POST":
                 const { title, description, budget, completed, region, type, location, lat, lng, completedDate, contractor } = req.body;
 
-                if (!title || !description || !type || !location || !budget || !completed || !region || !completedDate || !contractor) {
+                if (!title || !description || !type || !location || !region) {
+                    console.log(title, description, type, location, region)
                     return res.status(400).json({ error: "Missing required fields" });
                 }
 
-                const data: any = { title, description, type, location, budget, completed, region, completedDate };
+                const data: any = { title, description, type, location, region };
                 if (lat && lng) {
                     data['lat'] = parseFloat(lat);
                     data['lng'] = parseFloat(lng);
+                }
+                if (budget !== undefined) {
+                    data['budget'] = parseFloat(budget);
+                }
+                if (completed !== undefined) {
+                    data['completed'] = completed;
+                }
+                if (completedDate !== undefined) {
+                    data['completedDate'] = parseFloat(completedDate);
                 }
                 if (contractor) {
                     data['contractor'] = contractor;
                 }
 
-                const newInvestment = await prisma.investment.create({
+                const newInvestment = await prisma.investmentFinished.create({
                     data: data
                 });
 

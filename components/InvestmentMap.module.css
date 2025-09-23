@@ -55,6 +55,7 @@
 .mapSection {
     margin: 0;
     position: relative;
+    padding: 20px
 }
 
 .mapContainer {
@@ -76,15 +77,14 @@
 
 .mapControls {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 70px;
+    left: 60px;
     z-index: 1000;
     display: flex;
     background: white;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    border: 1px solid #e2e8f0;
 }
 
 .mapControl,
@@ -217,6 +217,22 @@
     font-family: Calibri, sans-serif;
 }
 
+.approveButton {
+    background: #38a169;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+.approveButton:hover {
+    background: #276749;
+}
+
 /* Leaflet Map Custom Styles */
 .mapPlaceholder :global(.leaflet-container) {
     font-family: Calibri, sans-serif;
@@ -238,38 +254,6 @@
 .mapPlaceholder :global(.custom-marker) {
     background: transparent !important;
     border: none !important;
-}
-
-.mapPlaceholder :global(.leaflet-control-zoom) {
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.mapPlaceholder :global(.leaflet-control-zoom a) {
-    background: white;
-    color: #4a6fa5;
-    border: 1px solid #e2e8f0;
-    width: 32px;
-    height: 32px;
-    line-height: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.2s ease;
-    font-size: 16px;
-}
-
-.mapPlaceholder :global(.leaflet-control-zoom a:hover) {
-    background: #4a6fa5;
-    color: white;
-    border-color: #4a6fa5;
-    transform: scale(1.05);
-}
-
-.mapPlaceholder :global(.leaflet-control-attribution) {
-    background: rgba(255, 255, 255, 0.9);
-    font-size: 10px;
-    border-radius: 4px;
-    border: 1px solid #e2e8f0;
 }
 
 .mapPlaceholder :global(.leaflet-popup-content) {

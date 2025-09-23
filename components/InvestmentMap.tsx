@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './InvestmentMap.module.css';
 import InvestmentCard from './InvestmentCard';
 import SuggestionModal from './SuggestionModal';
+import {useAuth} from "@/contexts/AuthContext";
 
 interface Investment {
     id: number;
@@ -16,8 +17,7 @@ interface Investment {
     likes: number;
     authorName: string;
     authorAddress: string;
-    createdAt?: string;
-    updatedAt?: string;
+    approved: boolean;
 }
 
 interface NewInvestmentData {
@@ -39,6 +39,7 @@ declare global {
 }
 
 const InvestmentMap: React.FC = () => {
+    const { isAdmin } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [investments, setInvestments] = useState<Investment[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -601,6 +602,43 @@ const InvestmentMap: React.FC = () => {
         setSelectedLocation(null);
     };
 
+    // Filter für Investments
+    const visibleInvestments = isAdmin()
+        ? investments
+        : investments.filter(inv => inv.approved);
+
+    const handleApprove = async (id: number) => {
+        try {
+            const updatedData = {
+                approved: true
+            };
+
+            const response = await fetch(`/api/investment/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Fehler beim Entfernen des Likes: ${response.statusText}`);
+            }
+
+            const updatedInvestment = await response.json();
+
+            setInvestments(investments.map(inv =>
+                inv.id === id ? updatedInvestment : inv
+            ));
+
+        } catch (err) {
+            console.error('Fehler beim Entfernen des Likes:', err);
+            setError(err instanceof Error ? err.message : 'Fehler beim Entfernen des Likes');
+            setTimeout(() => setError(null), 5000);
+        }
+        return;
+    };
+
     if (isLoading) {
         return (
             <div className={styles.container}>
@@ -676,18 +714,19 @@ const InvestmentMap: React.FC = () => {
             </div>
 
             <div className={styles.investmentsList}>
-                {investments.length === 0 && !isLoading ? (
-                    <div className={styles.emptyMessage}>
-                        Noch keine Investitionsvorschläge vorhanden. Fügen Sie den ersten hinzu!
-                    </div>
+                {visibleInvestments.length === 0 ? (
+                    <div className={styles.emptyMessage}>Keine Investments gefunden.</div>
                 ) : (
-                    investments.map(investment => (
-                        <InvestmentCard
-                            key={investment.id}
-                            investment={investment}
-                            onLike={() => handleLike(investment.id)}
-                            hasUserLiked={hasUserLiked(investment.id)}
-                        />
+                    visibleInvestments.map(inv => (
+                        <div key={inv.id} className={styles.investmentCard}>
+                            <InvestmentCard
+                                investment={inv}
+                                onLike={() => handleLike(inv.id)}
+                                hasUserLiked={hasUserLiked(inv.id)}
+                                isAdmin={isAdmin()}
+                                onApprove={() => handleApprove(inv.id)}
+                            />
+                        </div>
                     ))
                 )}
             </div>

@@ -147,6 +147,24 @@
     text-align: center;
 }
 
+.approveButton {
+    background: #38a169;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+    display: block;
+    width: 100%;
+}
+
+.approveButton:hover {
+    background: #276749;
+}
+
 /* Card states */
 .card::before {
     content: '';

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import styles from './InvestmentsFinished.module.css';
 import SuggestionModal from './SuggestionModal';
+import InvestmentModal from "@/components/InvestmentModal";
 
 interface FinishedInvestment {
     id: number;
@@ -23,12 +24,15 @@ interface FinishedInvestment {
 interface NewInvestmentData {
     title: string;
     description: string;
-    type: string;
+    budget: number;
+    completed: boolean;
+    region: string;
     location: string;
+    type: string;
     lat?: number;
     lng?: number;
-    authorName: string;
-    authorAddress: string;
+    completedDate?: string;
+    contractor?: string;
 }
 
 declare global {
@@ -324,6 +328,7 @@ const InvestmentsFinished: React.FC = () => {
                         font-style: italic;
                     ">${investment.region}</span>
                     
+                    ${investment.completed ? `
                     <div style="
                         display: flex; 
                         align-items: center; 
@@ -341,6 +346,7 @@ const InvestmentsFinished: React.FC = () => {
                         ">Abgeschlossen</span>
                     </div>
                 </div>
+                ` : ''}
                 
                 ${investment.completedDate ? `
                 <div style="
@@ -504,7 +510,9 @@ const InvestmentsFinished: React.FC = () => {
                 })
             };
 
-            const response = await fetch('/api/investment', {
+            console.log(suggestionWithCoords)
+
+            const response = await fetch('/api/finished-investments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -550,7 +558,7 @@ const InvestmentsFinished: React.FC = () => {
                     onClick={() => setIsAddModalOpen(true)}
                 >
                     <span className={styles.addIcon}>+</span>
-                    Vorschlag hinzufügen
+                    Investment hinzufügen
                 </button>
             </header>
 
@@ -565,10 +573,6 @@ const InvestmentsFinished: React.FC = () => {
 
             <div className={styles.mapSection}>
                 <div className={styles.mapContainer}>
-                    <div className={styles.mapInstructions}>
-                        🗺️ Klicken Sie auf die Karte, um einen neuen Investitionsvorschlag zu erstellen
-                    </div>
-
                     {/* Map View Toggle */}
                     <div className={styles.mapControls}>
                         <button
@@ -652,12 +656,12 @@ const InvestmentsFinished: React.FC = () => {
 
                         <div className={styles.modalContent}>
                             <div className={styles.modalField}>
-                                <label className={styles.modalLabel}>Type:</label>
+                                <label className={styles.modalLabel}>Art der Investition:</label>
                                 <span className={styles.modalValue}>{selectedInvestment.type}</span>
                             </div>
 
                             <div className={styles.modalField}>
-                                <label className={styles.modalLabel}>Description:</label>
+                                <label className={styles.modalLabel}>Beschreibung:</label>
                             </div>
 
                             <div className={styles.modalDescription}>
@@ -677,7 +681,7 @@ const InvestmentsFinished: React.FC = () => {
                                 <div className={styles.modalInfoItem}>
                                     <span className={styles.modalIcon}>📅</span>
                                     <div>
-                                        <strong>Completed:</strong> {selectedInvestment.completed ? 'Yes' : 'In Progress'}
+                                        <strong>Status:</strong> {selectedInvestment.completed ? 'Abgeschlossen' : 'Im Prozess'}
                                     </div>
                                 </div>
 
@@ -691,7 +695,7 @@ const InvestmentsFinished: React.FC = () => {
                                 <div className={styles.modalInfoItem}>
                                     <span className={styles.modalIcon}>📍</span>
                                     <div>
-                                        <strong>Location:</strong> {selectedInvestment.location}
+                                        <strong>Standort:</strong> {selectedInvestment.location}
                                     </div>
                                 </div>
 
@@ -725,10 +729,10 @@ const InvestmentsFinished: React.FC = () => {
             )}
 
             {isAddModalOpen && (
-                <SuggestionModal
+                <InvestmentModal
                     onSubmit={handleAddSuggestion}
                     onCancel={handleModalCancel}
-                    prefilledLocation={selectedLocation?.address}
+                    prefilledLocation={selectedLocation}
                 />
             )}
         </div>
