@@ -516,18 +516,51 @@ const InvestmentMap: React.FC = () => {
     };
 
     const handleLike = async (id: number) => {
-        // Check if user has already liked this investment
+        const investment = investments.find(inv => inv.id === id);
+        if (!investment) return;
+
+        // Prüfe, ob der Nutzer bereits geliked hat
         if (hasUserLiked(id)) {
-            setError('Sie haben diesen Investitionsvorschlag bereits geliked!');
-            // Clear error after 3 seconds
-            setTimeout(() => setError(null), 3000);
+            // Like entfernen
+            try {
+                const updatedData = {
+                    likes: investment.likes > 0 ? investment.likes - 1 : 0
+                };
+
+                const response = await fetch(`/api/investment/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedData),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Fehler beim Entfernen des Likes: ${response.statusText}`);
+                }
+
+                const updatedInvestment = await response.json();
+
+                setInvestments(investments.map(inv =>
+                    inv.id === id ? updatedInvestment : inv
+                ));
+
+                // Like aus Set entfernen und speichern
+                const newLikedInvestments = new Set(likedInvestments);
+                newLikedInvestments.delete(id);
+                setLikedInvestments(newLikedInvestments);
+                saveLikedInvestments(newLikedInvestments);
+
+            } catch (err) {
+                console.error('Fehler beim Entfernen des Likes:', err);
+                setError(err instanceof Error ? err.message : 'Fehler beim Entfernen des Likes');
+                setTimeout(() => setError(null), 5000);
+            }
             return;
         }
 
+        // Like hinzufügen
         try {
-            const investment = investments.find(inv => inv.id === id);
-            if (!investment) return;
-
             const updatedData = {
                 likes: investment.likes + 1
             };
@@ -546,12 +579,11 @@ const InvestmentMap: React.FC = () => {
 
             const updatedInvestment = await response.json();
 
-            // Update local state
             setInvestments(investments.map(inv =>
                 inv.id === id ? updatedInvestment : inv
             ));
 
-            // Add to liked investments and save to localStorage
+            // Like zum Set hinzufügen und speichern
             const newLikedInvestments = new Set(likedInvestments);
             newLikedInvestments.add(id);
             setLikedInvestments(newLikedInvestments);
@@ -560,7 +592,6 @@ const InvestmentMap: React.FC = () => {
         } catch (err) {
             console.error('Error updating likes:', err);
             setError(err instanceof Error ? err.message : 'Failed to update likes');
-            // Clear error after 5 seconds
             setTimeout(() => setError(null), 5000);
         }
     };
@@ -675,7 +706,5 @@ const InvestmentMap: React.FC = () => {
 export default InvestmentMap;
 
 //TODO
-// - handle hasUserLiked in Card to show different color
-// - allow user to remove like
 // - improve position of street/satellite toggle
 // - apply design to InvestmentsFinished

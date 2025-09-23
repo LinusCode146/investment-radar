@@ -9,9 +9,14 @@ generator client {
   output   = "../app/generated/prisma"
 }
 
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+// datasource db {
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
+// }
+
+datasource db_neon {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_NEON")
 }
 
 model Investment {
@@ -25,4 +30,19 @@ model Investment {
   likes         Int    @default(0)
   authorName    String
   authorAddress String
+}
+
+model InvestmentFinished {
+  id            Int      @id @default(autoincrement())
+  title         String
+  description   String
+  budget        Float
+  completed     Boolean
+  region        String
+  location      String
+  lat           Float?
+  lng           Float?
+  type          String
+  completedDate DateTime
+  contractor    String?
 }

@@ -2,6 +2,7 @@ import InvestmentMap from "@/components/InvestmentMap";
 import InvestmentsFinished from "@/components/InvestmentsFinished";
 import styles from "@/components/Navigation.module.css";
 import React from "react";
+import {AuthProvider} from "@/contexts/AuthContext";
 
 
 export default function Home() {
