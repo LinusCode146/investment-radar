@@ -1,5 +1,3 @@
-/* PublicInvestments.module.css */
-
 .container {
     min-height: 100vh;
     background: linear-gradient(135deg, #4a6fa5 0%, #5a7fb8 100%);
@@ -45,6 +43,18 @@
     .categoryTitle {
         font-size: 1.25rem;
     }
+
+    .nachhaltigkeitSection {
+        padding: 2.5rem 1rem;
+    }
+
+    .nachhaltigkeitContainer {
+        padding: 2rem 1rem;
+    }
+
+    .nachhaltigkeitTitle {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -62,6 +72,12 @@
 
     .card {
         padding: 1.25rem;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        min-width: 200px;
+        padding: 0.875rem 1.5rem;
     }
 }
 
@@ -320,6 +336,63 @@
 .secondaryButton:hover {
     background: #4a6fa5;
     color: white;
+}
+
+/* Nachhaltigkeit Section */
+.nachhaltigkeitSection {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e3eafc 100%);
+    padding: 4rem 2rem;
+    margin-top: 3rem;
+}
+
+.nachhaltigkeitContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(74, 111, 165, 0.08);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.nachhaltigkeitTitle {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #4a6fa5;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.nachhaltigkeitSubtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 2rem 0 1rem 0;
+}
+
+.nachhaltigkeitText {
+    color: #3a4662;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+.nachhaltigkeitList {
+    margin: 0 0 1.5rem 0;
+    padding-left: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.nachhaltigkeitList li {
+    margin-bottom: 0.7rem;
+    padding-left: 0.2rem;
+}
+
+.nachhaltigkeitSection strong {
+    color: #4a6fa5;
 }
 
 /* Additional Responsive Design for New Sections */

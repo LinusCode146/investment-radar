@@ -39,11 +39,10 @@ const Navigation: React.FC = () => {
                     </div>
 
                     <nav className={styles.navLinks}>
-                        <Link href="/" className={styles.navLink}>Home</Link>
-                        <Link href={"/investmentTypes"} className={styles.navLink}>Investment Types</Link>
-                        <Link className={styles.navLink} href={'/contact'}>Contact</Link>
-                        <Link href={"/mission"} className={styles.navLink}>Mission</Link>
-                        <Link href={"/data"} className={styles.navLink}>Data</Link>
+                        <Link href="/" className={styles.navLink}>Start</Link>
+                        <Link href={"/investmentTypes"} className={styles.navLink}>Erkunden</Link>
+                        <Link className={styles.navLink} href={'/contact'}>Kontakt</Link>
+                        <Link href={"/data"} className={styles.navLink}>Daten</Link>
                     </nav>
 
                     <div className={styles.authButtons}>
@@ -62,9 +61,8 @@ const Navigation: React.FC = () => {
                                     className={styles.loginBtn}
                                     onClick={() => setIsLoginModalOpen(true)}
                                 >
-                                    Log In
+                                    Administrator
                                 </button>
-                                <button className={styles.signupBtn}>Sign Up</button>
                             </>
                         )}
                     </div>

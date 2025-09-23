@@ -159,3 +159,46 @@
     cursor: pointer;
     opacity: .95;
 }
+
+.checkboxLabel {
+    display: flex;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2c3e50;
+    gap: 0.5rem;
+    line-height: 1.5;
+    flex-wrap: wrap;
+}
+
+.checkboxLabel a {
+    color: #4a6fa5;
+    text-decoration: underline;
+    word-break: break-word;
+}
+
+.checkbox {
+    accent-color: #4a6fa5;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+.invalid {
+    border-color: #e74c3c !important;
+    background: #fff6f6;
+}
+
+.invalidCheckbox {
+    outline: 2px solid #e74c3c;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    display: block;
+}

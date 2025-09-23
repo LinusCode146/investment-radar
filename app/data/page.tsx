@@ -19,23 +19,16 @@ const DataManagement: React.FC = () => {
     const exportCards: ExportCard[] = [
         {
             id: 'suggestions',
-            title: 'Investment Suggestions',
-            description: 'Export all community investment suggestions including location data, descriptions, investment types, and upvote counts.',
-            buttonText: 'Export Investment Suggestions',
+            title: 'Investitionsvorschläge',
+            description: 'Exportiere alle Vorschläge aus der Community inklusive Standort, Beschreibung, Investitionstyp und Anzahl der Stimmen.',
+            buttonText: 'Investitionsvorschläge exportieren',
             iconType: 'location'
         },
         {
-            id: 'messages',
-            title: 'Community Messages',
-            description: 'Export all messages sent to local authorities including sender information, regions, subjects, and message content.',
-            buttonText: 'Export Messages',
-            iconType: 'message'
-        },
-        {
             id: 'accomplished',
-            title: 'Accomplished Investments',
-            description: 'Export data on completed public investments including budgets, completion dates, and regional information.',
-            buttonText: 'Export Accomplished Investments',
+            title: 'Abgeschlossene Investitionen',
+            description: 'Exportiere Daten zu abgeschlossenen öffentlichen Investitionen inklusive Budget, Abschlussdatum und regionalen Informationen.',
+            buttonText: 'Abgeschlossene Investitionen exportieren',
             iconType: 'check'
         }
     ];
@@ -43,17 +36,17 @@ const DataManagement: React.FC = () => {
     const features: Feature[] = [
         {
             id: 'secure',
-            title: 'Secure Data Transfer',
+            title: 'Sichere Datenübertragung',
             iconType: 'shield'
         },
         {
             id: 'realtime',
-            title: 'Real-time Sync',
+            title: 'Echtzeit-Synchronisierung',
             iconType: 'clock'
         },
         {
             id: 'collaborative',
-            title: 'Collaborative Access',
+            title: 'Gemeinsamer Zugriff',
             iconType: 'users'
         }
     ];
@@ -67,11 +60,14 @@ const DataManagement: React.FC = () => {
 
     return (
         <section className={styles.container}>
+            <div className={styles.banner}>
+                Erst nach der Testphase werden Daten bereitgestellt
+            </div>
             <div className={styles.header}>
-                <h2 className={styles.title}>Data Management</h2>
+                <h2 className={styles.title}>Daten</h2>
                 <div className={styles.subtitle}>
-                    <p>Export platform data to Google Sheets for analysis and management.</p>
-                    <p>Download comprehensive reports of investment suggestions, community messages, and accomplished investments.</p>
+                    <p>Exportiere Plattformdaten zur Analyse und Verwaltung nach Google Sheets.</p>
+                    <p>Lade umfassende Berichte zu Investitionsvorschlägen und abgeschlossenen Investitionen herunter.</p>
                 </div>
             </div>
 
@@ -89,13 +85,11 @@ const DataManagement: React.FC = () => {
             <div className={styles.integrationSection}>
                 <div className={styles.integrationHeader}>
                     <div className={styles.infoIcon}></div>
-                    <h3 className={styles.integrationTitle}>Google Sheets Integration</h3>
+                    <h3 className={styles.integrationTitle}>Daten in Tabellenform extrahieren</h3>
                 </div>
 
                 <p className={styles.integrationDescription}>
-                    All exported data will be automatically synchronized with your Google Sheets workspace. This integration
-                    enables real-time data analysis, collaborative reporting, and streamlined data management for transparency
-                    initiatives.
+                    Alle exportierten Daten werden automatisch mit deinem Google Sheets-Arbeitsbereich synchronisiert. Diese Integration ermöglicht Echtzeit-Analyse, gemeinsames Reporting und eine effiziente Verwaltung für mehr Transparenz.
                 </p>
 
                 <div className={styles.featuresGrid}>

@@ -144,6 +144,7 @@ const InvestmentsFinished: React.FC = () => {
 
         // Add click listener for placing pins
         map.on('click', async (event: any) => {
+            if (!isAdmin || !isAdmin()) return; // Only allow admin to place pins
             const { lat, lng } = event.latlng;
 
             try {
@@ -553,6 +554,7 @@ const InvestmentsFinished: React.FC = () => {
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1 className={styles.title}>Radar: Getätigte Investitionen</h1>
+            {isAdmin() && (
                 <button
                     className={styles.addButton}
                     onClick={() => setIsAddModalOpen(true)}
@@ -560,6 +562,7 @@ const InvestmentsFinished: React.FC = () => {
                     <span className={styles.addIcon}>+</span>
                     Investment hinzufügen
                 </button>
+            )}
             </header>
 
             {error && (

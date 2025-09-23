@@ -639,6 +639,21 @@ const InvestmentMap: React.FC = () => {
         return;
     };
 
+    // Delete investment by ID
+    const handleDelete = async (id: number) => {
+        if (!window.confirm('Möchten Sie dieses Investment wirklich löschen?')) return;
+        try {
+            const res = await fetch(`/api/investment/${id}`, { method: 'DELETE' });
+            if (res.ok) {
+                setInvestments(prev => prev.filter(inv => inv.id !== id));
+            } else {
+                alert('Fehler beim Löschen des Investments.');
+            }
+        } catch (error) {
+            alert('Fehler beim Löschen des Investments.');
+        }
+    };
+
     if (isLoading) {
         return (
             <div className={styles.container}>
@@ -725,6 +740,7 @@ const InvestmentMap: React.FC = () => {
                                 hasUserLiked={hasUserLiked(inv.id)}
                                 isAdmin={isAdmin()}
                                 onApprove={() => handleApprove(inv.id)}
+                                onDelete={() => handleDelete(inv.id)} // Pass delete handler
                             />
                         </div>
                     ))

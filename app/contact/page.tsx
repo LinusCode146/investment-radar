@@ -1,7 +1,8 @@
 "use client"
 
 import React, { useState } from "react";
-import styles from './ContactAuthorities.module.css';
+import exStyles from "../investmentTypes/page.module.css"
+import styles from "./page.module.css";
 
 interface Message {
     id: string;
@@ -21,7 +22,7 @@ const Page: React.FC = () => {
         e.preventDefault();
 
         if (!region || !subject || !messageContent) {
-            alert('Please fill in all fields');
+            alert('Bitte fülle alle Felder aus');
             return;
         }
 
@@ -40,28 +41,24 @@ const Page: React.FC = () => {
         setSubject('');
         setMessageContent('');
 
-        alert('Message sent successfully!');
+        alert('Nachricht erfolgreich gesendet!');
     };
 
     return (
         <div className={styles.container}>
-            <div className={styles.header}>
-                <h1 className={styles.title}>Contact Your Local Authorities</h1>
-                <p className={styles.subtitle}>
-                    Communicate directly with your local commune about investment
-                    needs and community concerns. Your voice matters in shaping public
-                    investment decisions.
+            <header className={exStyles.header}>
+                <h1 className={exStyles.title}>Kontakt zu lokalen Behörden</h1>
+                <p className={exStyles.subtitle}>
+                    Kommuniziere direkt mit deiner Kommune über Investitionsbedarfe und Anliegen. Deine Stimme zählt für die Gestaltung öffentlicher Investitionen.
                 </p>
-            </div>
-
+            </header>
             <div className={styles.content}>
                 <div className={styles.formSection}>
-                    <h2 className={styles.sectionTitle}>Send a Message</h2>
-
+                    <h2 className={styles.sectionTitle}>Nachricht senden</h2>
                     <form onSubmit={handleSubmit} className={styles.form}>
                         <div className={styles.fieldGroup}>
                             <label htmlFor="region" className={styles.label}>
-                                Select Your Region
+                                Wähle deine Region
                             </label>
                             <select
                                 id="region"
@@ -70,57 +67,48 @@ const Page: React.FC = () => {
                                 className={styles.select}
                                 required
                             >
-                                <option value="">Choose your region</option>
-                                <option value="north">North Region</option>
-                                <option value="south">South Region</option>
-                                <option value="east">East Region</option>
-                                <option value="west">West Region</option>
-                                <option value="central">Central Region</option>
+                                <option value="">Region auswählen</option>
+                                <option value="geisenheim">Geisenheim</option>
                             </select>
                         </div>
-
                         <div className={styles.fieldGroup}>
                             <label htmlFor="subject" className={styles.label}>
-                                Subject
+                                Betreff
                             </label>
                             <input
                                 type="text"
                                 id="subject"
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
-                                placeholder="Brief description of your message"
+                                placeholder="Kurze Beschreibung deiner Nachricht"
                                 className={styles.input}
                                 required
                             />
                         </div>
-
                         <div className={styles.fieldGroup}>
                             <label htmlFor="messageContent" className={styles.label}>
-                                Message Content
+                                Nachricht
                             </label>
                             <textarea
                                 id="messageContent"
                                 value={messageContent}
                                 onChange={(e) => setMessageContent(e.target.value)}
-                                placeholder="Describe your investment concerns, suggestions, or questions in detail..."
+                                placeholder="Beschreibe dein Anliegen, deine Vorschläge oder Fragen im Detail..."
                                 className={styles.textarea}
                                 rows={6}
                                 required
                             />
                         </div>
-
                         <button type="submit" className={styles.submitButton}>
-                            Send Message
+                            Nachricht senden
                         </button>
                     </form>
                 </div>
-
                 <div className={styles.historySection}>
-                    <h2 className={styles.sectionTitle}>Your Message History</h2>
-
+                    <h2 className={styles.sectionTitle}>Nachrichtenverlauf</h2>
                     {messages.length === 0 ? (
                         <p className={styles.noMessages}>
-                            No messages sent yet. Use the form to contact your local authorities.
+                            Noch keine Nachrichten gesendet. Nutze das Formular, um deine Kommune zu kontaktieren.
                         </p>
                     ) : (
                         <div className={styles.messageList}>
@@ -129,8 +117,8 @@ const Page: React.FC = () => {
                                     <div className={styles.messageHeader}>
                                         <strong>{message.subject}</strong>
                                         <span className={styles.messageDate}>
-                      {message.timestamp.toLocaleDateString()}
-                    </span>
+                                            {message.timestamp.toLocaleDateString()}
+                                        </span>
                                     </div>
                                     <div className={styles.messageRegion}>
                                         Region: {message.region}
