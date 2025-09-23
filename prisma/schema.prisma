@@ -33,7 +33,7 @@ model Investment {
 }
 
 model InvestmentFinished {
-  id            Int      @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   title         String
   description   String
   budget        Float
@@ -43,6 +43,6 @@ model InvestmentFinished {
   lat           Float?
   lng           Float?
   type          String
-  completedDate DateTime
+  completedDate DateTime?
   contractor    String?
 }
