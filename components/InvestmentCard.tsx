@@ -8,8 +8,8 @@ interface Investment {
     type: string;
     location: string;
     likes: number;
-    authorName: string;
-    authorAddress: string;
+    authorAge: string;
+    authorPlz: string;
     approved: boolean;
 }
 
@@ -50,7 +50,6 @@ const InvestmentCard: React.FC<InvestmentCardProps> = ({
 
                 <div className={styles.metadata}>
                     <span className={styles.type}>{investment.type}</span>
-                    <span className={styles.author}>von {investment.authorName}</span>
                 </div>
             </div>
 

@@ -15,8 +15,8 @@ interface Investment {
     lat?: number;
     lng?: number;
     likes: number;
-    authorName: string;
-    authorAddress: string;
+    authorAge: string;
+    authorPlz: string;
     approved: boolean;
 }
 
@@ -27,8 +27,8 @@ interface NewInvestmentData {
     location: string;
     lat?: number;
     lng?: number;
-    authorName: string;
-    authorAddress: string;
+    authorAge: string;
+    authorPlz: string;
 }
 
 // Declare global Leaflet types
@@ -314,7 +314,7 @@ const InvestmentMap: React.FC = () => {
                         color: #718096; 
                         font-size: 12px;
                         font-style: italic;
-                    ">von ${investment.authorName}</span>
+                    ">von ${investment.authorAge}</span>
                     
                     <div style="
                         display: flex; 

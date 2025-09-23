@@ -20,17 +20,17 @@ datasource db_neon {
 }
 
 model Investment {
-  id            Int     @id @default(autoincrement())
-  title         String
-  description   String
-  type          String
-  location      String
-  lat           Float?
-  lng           Float?
-  likes         Int     @default(0)
-  authorName    String
-  authorAddress String
-  approved      Boolean @default(false)
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String
+  type        String
+  location    String
+  lat         Float?
+  lng         Float?
+  likes       Int     @default(0)
+  authorPlz   String
+  authorAge   Int
+  approved    Boolean @default(false)
 }
 
 model InvestmentFinished {

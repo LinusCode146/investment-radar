@@ -8,8 +8,8 @@ interface SuggestionData {
     description: string;
     type: string;
     location: string;
-    authorName: string;
-    authorAddress: string;
+    authorAge: string;
+    authorPlz: string;
 }
 
 interface SuggestionModalProps {
@@ -24,8 +24,8 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel, p
         description: '',
         type: '',
         location: '',
-        authorName: '',
-        authorAddress: ''
+        authorAge: '',
+        authorPlz: ''
     });
 
     const investmentTypes = [
@@ -141,24 +141,24 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel, p
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.label}>Ihr Name</label>
+                        <label className={styles.label}>Ihre Postleitzahl</label>
                         <input
                             type="text"
                             className={styles.input}
-                            placeholder="Ihr Name"
-                            value={formData.authorName}
-                            onChange={(e) => handleInputChange('authorName', e.target.value)}
+                            placeholder="Ihre Postleitzahl"
+                            value={formData.authorPlz}
+                            onChange={(e) => handleInputChange('authorPlz', e.target.value)}
                         />
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.label}>Ihre Adresse</label>
+                        <label className={styles.label}>Ihr Alter</label>
                         <input
-                            type="text"
+                            type="number"
                             className={styles.input}
-                            placeholder="Ihre Adresse"
-                            value={formData.authorAddress}
-                            onChange={(e) => handleInputChange('authorAddress', e.target.value)}
+                            placeholder="Ihr Alter"
+                            value={formData.authorAge}
+                            onChange={(e) => handleInputChange('authorAge', e.target.value)}
                         />
                     </div>
 

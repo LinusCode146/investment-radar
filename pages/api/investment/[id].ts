@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return res.status(200).json(investment);
 
             case "PUT":
-                const allowedFields = ["title", "description", "type", "location", "lat", "lng", "likes", "authorName", "authorAdress", "approved"];
+                const allowedFields = ["title", "description", "type", "location", "lat", "lng", "likes", "authorPlz", "authorAge", "approved"];
                 const dataToUpdate: Record<string, any> = {};
 
                 allowedFields.forEach((field) => {

@@ -13,16 +13,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return res.status(200).json(investments);
 
             case "POST":
-                const { title, description, type, location, lat, lng, authorName, authorAddress } = req.body;
+                const { title, description, type, location, lat, lng, authorPlz, authorAge } = req.body;
 
-                if (!title || !description || !type || !location || !authorName || !authorAddress) {
+                if (!title || !description || !type || !location || !authorPlz) {
                     return res.status(400).json({ error: "Missing required fields" });
                 }
 
-                const data: any = { title, description, type, location, authorName, authorAddress };
+                const data: any = { title, description, type, location, authorPlz, authorAge };
                 if (lat && lng) {
                     data['lat'] = parseFloat(lat);
                     data['lng'] = parseFloat(lng);
+                }
+                if (authorAge !== undefined) {
+                    data['authorAge'] = parseInt(authorAge);
                 }
 
                 const newInvestment = await prisma.investment.create({
