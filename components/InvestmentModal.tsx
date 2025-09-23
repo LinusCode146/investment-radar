@@ -45,16 +45,12 @@ const InvestmentModal: React.FC<InvestmentModalProps> = ({ onSubmit, onCancel, p
     });
 
     const investmentTypes = [
-        'Öffentliche Infrastruktur',
         'Bildung',
-        'Gesundheitswesen',
-        'Verkehr',
-        'Umwelt & Nachhaltigkeit',
-        'Digitalisierung',
-        'Sport & Freizeit',
-        'Kultur',
-        'Sicherheit',
-        'Sonstiges'
+        'Forschung',
+        'Digitale Infrastruktur',
+        'Verkehrsinfrastruktur',
+        'Soziale Infrastruktur',
+        'Öffentliche Infrastruktur'
     ];
 
     // Update location field when prefilledLocation changes
