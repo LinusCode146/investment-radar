@@ -12,40 +12,41 @@ const PublicInvestments: React.FC = () => {
     const investmentCategories: InvestmentCategory[] = [
         {
             id: 'education',
-            title: 'Education',
-            description: 'Educational investments support school buildings, tech, and training.',
-            examples: ['Schools', 'Libraries', 'Training Centers']
+            title: 'Bildung',
+            description: 'Investitionen in Bildung stärken Schulen, digitale Ausstattung und Weiterbildung.',
+            examples: ['Schulen', 'Bibliotheken', 'Weiterbildungszentren']
         },
         {
             id: 'publicSafety',
-            title: 'Public Safety',
-            description: 'Public Safety involves police, fire stations, and emergency services.',
-            examples: ['Police Stations', 'Fire Stations', 'Alarms']
+            title: 'Forschung',
+            description: 'Forschung fördert Innovation, Wissenstransfer und technologische Entwicklung.',
+            examples: ['Labore', 'Forschungszentren', 'Innovationsprojekte']
         },
         {
             id: 'infrastructure',
-            title: 'Infrastructure',
-            description: 'Infrastructure projects include bridges, roads, and buildings.',
-            examples: ['Bridges', 'Tunnels', 'Highways']
+            title: 'Digitale Infrastruktur',
+            description: 'Digitale Infrastruktur umfasst Netze, Rechenzentren und moderne Technologien.',
+            examples: ['Breitband', 'Rechenzentren', '5G-Netze']
         },
         {
             id: 'healthcare',
-            title: 'Healthcare',
-            description: 'Healthcare investments focus on clinics, hospitals, and medical equipment.',
-            examples: ['Clinics', 'Hospitals', 'Medical Equipment']
+            title: 'Verkehrsinfrastruktur',
+            description: 'Verkehrsinfrastruktur verbindet Menschen durch Straßen, Schienen und Mobilität.',
+            examples: ['Straßen', 'Bahnlinien', 'ÖPNV']
         },
         {
             id: 'environment',
-            title: 'Environment',
-            description: 'Environmental projects focus on sustainability efforts and green tech.',
-            examples: ['Parks', 'Renewable Energy', 'Waste Management']
+            title: 'Soziale Infrastruktur',
+            description: 'Soziale Infrastruktur schafft Räume für Gemeinschaft, Unterstützung und Teilhabe.',
+            examples: ['Parks', 'Gemeindezentren', 'Wohnprojekte']
         },
         {
             id: 'transportation',
-            title: 'Transportation',
-            description: 'Transportation projects include roads, metro lines, and stations.',
-            examples: ['Metro Systems', 'Bus Networks', 'Transit Stations']
+            title: 'Öffentliche Verwaltung',
+            description: 'Öffentliche Verwaltung sichert effiziente Abläufe und Bürgerdienste.',
+            examples: ['Rathäuser', 'Bürgerämter', 'Serviceportale']
         }
+
     ];
 
     return (
@@ -72,7 +73,7 @@ const PublicInvestments: React.FC = () => {
                             </p>
 
                             <div className={styles.examples}>
-                                <h3 className={styles.examplesTitle}>Examples:</h3>
+                                <h3 className={styles.examplesTitle}>Beispiele:</h3>
                                 <p className={styles.examplesList}>
                                     {category.examples.join(', ')}
                                 </p>
