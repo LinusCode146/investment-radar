@@ -15,9 +15,10 @@ interface Investment {
 interface InvestmentCardProps {
     investment: Investment;
     onLike: () => void;
+    hasUserLiked: boolean;
 }
 
-const InvestmentCard: React.FC<InvestmentCardProps> = ({ investment, onLike }) => {
+const InvestmentCard: React.FC<InvestmentCardProps> = ({ investment, onLike, hasUserLiked }) => {
     const isLongDescription = investment.description.length > 200;
 
     return (

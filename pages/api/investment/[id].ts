@@ -18,12 +18,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return res.status(200).json(investment);
 
             case "PUT":
-                const allowedFields = ["title", "description", "type", "location", "likes", "authorName", "authorAdress"];
+                const allowedFields = ["title", "description", "type", "location", "lat", "lng", "likes", "authorName", "authorAdress"];
                 const dataToUpdate: Record<string, any> = {};
 
                 allowedFields.forEach((field) => {
                     if (req.body[field] !== undefined) {
-                        dataToUpdate[field] = req.body[field];
+                        if (field === "lat" || field === "lng") {
+                            dataToUpdate[field] = parseFloat(req.body[field]);
+                        } else {
+                            dataToUpdate[field] = req.body[field];
+                        }
                     }
                 });
 

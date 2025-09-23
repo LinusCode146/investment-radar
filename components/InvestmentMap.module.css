@@ -53,27 +53,38 @@
 }
 
 .mapSection {
-    height: 400px;
     margin: 0;
     position: relative;
 }
 
 .mapContainer {
-    height: 100%;
     position: relative;
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mapInstructions {
+    background: #e8f0fe;
+    color: #1a73e8;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    border-bottom: 1px solid #dadce0;
 }
 
 .mapControls {
     position: absolute;
     top: 20px;
     left: 20px;
-    z-index: 10;
+    z-index: 1000;
     display: flex;
     background: white;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
 }
 
 .mapControl,
@@ -98,7 +109,8 @@
 
 .mapPlaceholder {
     width: 100%;
-    height: 100%;
+    height: 450px;
+    background: #f8f9fa;
     position: relative;
     overflow: hidden;
 }
@@ -156,6 +168,160 @@
     margin: 0 auto;
 }
 
+.loadingMessage {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    font-size: 18px;
+    font-family: Calibri, sans-serif;
+}
+
+.errorMessage {
+    background: #fef7f0;
+    border: 1px solid #f9ab55;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0 2rem 20px 2rem;
+    color: #b95000;
+}
+
+.errorMessage p {
+    margin: 0 0 12px 0;
+    font-weight: 500;
+}
+
+.retryButton {
+    background: #ea4335;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.retryButton:hover {
+    background: #d33b2c;
+}
+
+.emptyMessage {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    font-size: 16px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px dashed #dadce0;
+    font-family: Calibri, sans-serif;
+}
+
+/* Leaflet Map Custom Styles */
+.mapPlaceholder :global(.leaflet-container) {
+    font-family: Calibri, sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+.mapPlaceholder :global(.leaflet-popup-content-wrapper) {
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e2e8f0;
+}
+
+.mapPlaceholder :global(.leaflet-popup-tip) {
+    background: white;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15);
+}
+
+.mapPlaceholder :global(.custom-marker) {
+    background: transparent !important;
+    border: none !important;
+}
+
+.mapPlaceholder :global(.leaflet-control-zoom) {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mapPlaceholder :global(.leaflet-control-zoom a) {
+    background: white;
+    color: #4a6fa5;
+    border: 1px solid #e2e8f0;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    font-size: 16px;
+}
+
+.mapPlaceholder :global(.leaflet-control-zoom a:hover) {
+    background: #4a6fa5;
+    color: white;
+    border-color: #4a6fa5;
+    transform: scale(1.05);
+}
+
+.mapPlaceholder :global(.leaflet-control-attribution) {
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 10px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.mapPlaceholder :global(.leaflet-popup-content) {
+    margin: 12px 16px;
+    line-height: 1.5;
+    min-width: 260px;
+}
+
+.mapPlaceholder :global(.leaflet-popup-close-button) {
+    color: #a0aec0;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px;
+    right: 8px;
+    top: 8px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 16px;
+    transition: all 0.2s ease;
+}
+
+.mapPlaceholder :global(.leaflet-popup-close-button):hover {
+    color: #4a6fa5;
+    background: #f7fafc;
+    border-radius: 50%;
+}
+
+/* Custom marker animations */
+.mapPlaceholder :global(.leaflet-marker-icon) {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.mapPlaceholder :global(.leaflet-marker-icon:hover) {
+    transform: scale(1.15);
+    filter: drop-shadow(0 4px 8px rgba(74, 111, 165, 0.4));
+}
+
+/* Enhanced popup styling */
+.mapPlaceholder :global(.custom-popup .leaflet-popup-content-wrapper) {
+    background: white;
+    color: #2d3748;
+    font-size: 14px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.mapPlaceholder :global(.leaflet-popup) {
+    margin-bottom: 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header {
@@ -175,6 +341,10 @@
     }
 
     .mapSection {
+        margin: 0;
+    }
+
+    .mapPlaceholder {
         height: 300px;
     }
 
@@ -187,11 +357,27 @@
     .mapControls {
         top: 10px;
         left: 10px;
+        font-size: 0.8rem;
+    }
+
+    .mapControl,
+    .mapControlActive {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .errorMessage {
+        margin: 0 1rem 20px 1rem;
+    }
+
+    .mapInstructions {
+        font-size: 12px;
+        padding: 10px 12px;
     }
 }
 
 @media (max-width: 480px) {
-    .mapSection {
+    .mapPlaceholder {
         height: 250px;
     }
 
@@ -201,5 +387,27 @@
 
     .mapPin {
         font-size: 1.2rem;
+    }
+
+    .investmentsList {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+    }
+
+    .mapControls {
+        top: 5px;
+        left: 5px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .mapPlaceholder :global(.leaflet-control-zoom) {
+        margin: 5px;
+    }
+
+    .mapPlaceholder :global(.leaflet-control-zoom a) {
+        width: 25px;
+        height: 25px;
+        line-height: 23px;
+        font-size: 14px;
     }
 }

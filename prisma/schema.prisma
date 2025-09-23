@@ -20,6 +20,8 @@ model Investment {
   description   String
   type          String
   location      String
+  lat           Float?
+  lng           Float?
   likes         Int    @default(0)
   authorName    String
   authorAddress String

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './SuggestionModal.module.css';
 
 interface SuggestionData {
@@ -15,9 +15,10 @@ interface SuggestionData {
 interface SuggestionModalProps {
     onSubmit: (data: SuggestionData) => void;
     onCancel: () => void;
+    prefilledLocation?: string;
 }
 
-const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel }) => {
+const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel, prefilledLocation }) => {
     const [formData, setFormData] = useState<SuggestionData>({
         title: '',
         description: '',
@@ -39,6 +40,16 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
         'Sicherheit',
         'Sonstiges'
     ];
+
+    // Update location field when prefilledLocation changes
+    useEffect(() => {
+        if (prefilledLocation) {
+            setFormData(prev => ({
+                ...prev,
+                location: prefilledLocation
+            }));
+        }
+    }, [prefilledLocation]);
 
     const handleInputChange = (field: keyof SuggestionData, value: string) => {
         setFormData(prev => ({
@@ -71,21 +82,21 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
 
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <div className={styles.formGroup}>
-                        <label className={styles.label}>Title</label>
+                        <label className={styles.label}>Titel</label>
                         <input
                             type="text"
                             className={styles.input}
-                            placeholder="Enter suggestion title"
+                            placeholder="Titel des Investitionsvorschlags eingeben"
                             value={formData.title}
                             onChange={(e) => handleInputChange('title', e.target.value)}
                         />
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.label}>Description</label>
+                        <label className={styles.label}>Beschreibung</label>
                         <textarea
                             className={styles.textarea}
-                            placeholder="Describe the investment need"
+                            placeholder="Beschreiben Sie den Investitionsbedarf..."
                             rows={4}
                             value={formData.description}
                             onChange={(e) => handleInputChange('description', e.target.value)}
@@ -99,7 +110,7 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
                             value={formData.type}
                             onChange={(e) => handleInputChange('type', e.target.value)}
                         >
-                            <option value="">Select investment type</option>
+                            <option value="">Investitionstyp auswählen</option>
                             {investmentTypes.map(type => (
                                 <option key={type} value={type}>{type}</option>
                             ))}
@@ -107,33 +118,45 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.label}>Automatische Standortauswahl</label>
+                        <label className={styles.label}>
+                            Standort
+                            {prefilledLocation && (
+                                <span className={styles.locationHint}>
+                                    📍 Automatisch von Kartenauswahl übernommen
+                                </span>
+                            )}
+                        </label>
                         <input
                             type="text"
-                            className={styles.input}
-                            placeholder="Standort"
+                            className={`${styles.input} ${prefilledLocation ? styles.prefilledInput : ''}`}
+                            placeholder="Standort eingeben oder auf Karte auswählen"
                             value={formData.location}
                             onChange={(e) => handleInputChange('location', e.target.value)}
                         />
+                        {prefilledLocation && (
+                            <div className={styles.locationNote}>
+                                Sie können den automatisch erkannten Standort bei Bedarf bearbeiten.
+                            </div>
+                        )}
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.label}>Name</label>
+                        <label className={styles.label}>Ihr Name</label>
                         <input
                             type="text"
                             className={styles.input}
-                            placeholder="Name"
+                            placeholder="Ihr Name"
                             value={formData.authorName}
                             onChange={(e) => handleInputChange('authorName', e.target.value)}
                         />
                     </div>
 
                     <div className={styles.formGroup}>
-                        <label className={styles.label}>Adresse</label>
+                        <label className={styles.label}>Ihre Adresse</label>
                         <input
                             type="text"
                             className={styles.input}
-                            placeholder="Adresse"
+                            placeholder="Ihre Adresse"
                             value={formData.authorAddress}
                             onChange={(e) => handleInputChange('authorAddress', e.target.value)}
                         />
@@ -145,14 +168,14 @@ const SuggestionModal: React.FC<SuggestionModalProps> = ({ onSubmit, onCancel })
                             className={`${styles.submitButton} ${!isFormValid ? styles.submitButtonDisabled : ''}`}
                             disabled={!isFormValid}
                         >
-                            Submit Suggestion
+                            Vorschlag einreichen
                         </button>
                         <button
                             type="button"
                             className={styles.cancelButton}
                             onClick={onCancel}
                         >
-                            Cancel
+                            Abbrechen
                         </button>
                     </div>
                 </form>
