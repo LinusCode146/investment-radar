@@ -80,35 +80,6 @@ const PublicInvestments: React.FC = () => {
                 </div>
             </main>
 
-            <section className={styles.transparencySection}>
-                <div className={styles.transparencyContainer}>
-                    <h2 className={styles.transparencyTitle}>Warum Transparenz bei öffentlichen Investitionen wichtig ist</h2>
-                    <div className={styles.transparencyGrid}>
-                        <div className={styles.transparencyCard}>
-                            <div className={`${styles.transparencyIcon} ${styles.accountabilityIcon}`}></div>
-                            <h3 className={styles.transparencyCardTitle}>Verantwortlichkeit</h3>
-                            <p className={styles.transparencyCardDescription}>
-                                Bürgerinnen und Bürger können nachvollziehen, wie öffentliche Mittel verwendet und verteilt werden.
-                            </p>
-                        </div>
-                        <div className={styles.transparencyCard}>
-                            <div className={`${styles.transparencyIcon} ${styles.engagementIcon}`}></div>
-                            <h3 className={styles.transparencyCardTitle}>Bürgerbeteiligung</h3>
-                            <p className={styles.transparencyCardDescription}>
-                                Informierte Bürgerinnen und Bürger können sich aktiv an öffentlichen Diskussionen und Entscheidungsprozessen beteiligen.
-                            </p>
-                        </div>
-                        <div className={styles.transparencyCard}>
-                            <div className={`${styles.transparencyIcon} ${styles.outcomesIcon}`}></div>
-                            <h3 className={styles.transparencyCardTitle}>Bessere Ergebnisse</h3>
-                            <p className={styles.transparencyCardDescription}>
-                                Transparenz führt zu einer effizienteren Mittelverwendung und besseren Projektergebnissen.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section className={styles.ctaSection}>
                 <div className={styles.ctaContainer}>
                     <h2 className={styles.ctaTitle}>Engagieren Sie sich in Ihrer Gemeinde</h2>
@@ -136,41 +107,44 @@ const PublicInvestments: React.FC = () => {
                 <div className={styles.nachhaltigkeitContainer}>
                     <h2 className={styles.nachhaltigkeitTitle}>Was sind nachhaltige Investitionen?</h2>
                     <p className={styles.nachhaltigkeitText}>
-                        Nachhaltige Investitionen verbinden ökologische Verantwortung, soziale Gerechtigkeit und zukunftsweisende Strukturen. Sie schaffen Mehrwert, der über den Moment hinausgeht – indem sie Qualität sichern, Ressourcen schonen und gleichzeitig in Bildung, Forschung sowie moderne Infrastrukturen investieren. Doch was genau verstehen wir unter ihnen?
+                        Nachhaltige Investitionen sind Investitionen, die auf <strong>Qualität</strong> im umfassenden Sinn
+                        ausgerichtet sind. Sie schaffen Strukturen, die <strong>funktional</strong> zuverlässig wirken, <strong>dauerhaft</strong>
+                        bestehen und <strong>kompatibel</strong> mit bestehenden Systemen sind.
+                        Über diese messbaren Kriterien hinaus können nachhaltige Investitionen zugleich
+                        <strong>ökologisch</strong> wirksam sein – etwa durch Ressourcenschonung und Emissionsminderung –
+                        und <strong>sozial förderlich</strong>, indem sie Teilhabe und faire Bedingungen unterstützen. Diese Effekte
+                        verstehen wir als wertvolle Ergänzungen, auch wenn sie nicht in eigenen Kategorien erfasst
+                        werden.
                     </p>
                     <h3 className={styles.nachhaltigkeitSubtitle}>Unsere Definition von Investitionen</h3>
                     <p className={styles.nachhaltigkeitText}>
-                        Investitionen sind für uns mehr als bloße Finanzierungen. Sie sind ein aktives Bekenntnis zur Zukunft und Ausdruck unseres Willens, Strukturen aufzubauen, die langfristig Bestand haben. Dabei konzentrieren wir uns auf vier zentrale Kategorien, die wir als entscheidend für eine nachhaltige Entwicklung betrachten:
+                        Wir unterscheiden sechs zentrale Kategorien, die für eine nachhaltige Entwicklung besonders relevant sind:
                     </p>
                     <ul className={styles.nachhaltigkeitList}>
-                        <li><strong>Verkehrsinfrastruktur</strong> – Mobilität ist das Rückgrat einer funktionierenden Gesellschaft. Investitionen in moderne, effiziente und nachhaltige Verkehrssysteme tragen dazu bei, Verbindungen zu schaffen, Ressourcen zu schonen und Lebensqualität zu erhöhen.</li>
-                        <li><strong>Digitale Infrastruktur</strong> – Eine vernetzte, leistungsfähige digitale Umgebung ist unverzichtbar, um Wissen zugänglich zu machen, Prozesse zu optimieren und Teilhabe in allen Lebensbereichen zu ermöglichen.</li>
-                        <li><strong>Bildung</strong> – Sie ist die Grundlage für individuelles Wachstum und gesellschaftliche Entwicklung. Investitionen in Bildung bedeuten, Menschen zu befähigen, ihr Potenzial zu entfalten und die Herausforderungen von morgen aktiv zu gestalten.</li>
-                        <li><strong>Forschung</strong> – Neue Erkenntnisse sind der Motor für Fortschritt. Indem wir Forschung fördern, schaffen wir Innovationen, die Lösungen für komplexe Probleme bieten und den Weg in eine nachhaltigere Zukunft ebnen.</li>
+                        <li><strong>Bildung</strong> – Investitionen im Bildungssektor umfassen den Ausbau und die qualitative Verbesserung von frühkindlicher, schulischer, beruflicher und akademischer Bildung. Sie zielen darauf ab, Humankapital zu entwickeln, individuelle Kompetenzen zu stärken und gesellschaftliche Innovationsfähigkeit langfristig zu sichern.</li>
+                        <li><strong>Forschung</strong> – Investitionen in Forschung schaffen die Grundlage für Wissensproduktion, technologische Innovationen und evidenzbasierte Politikgestaltung. Sie dienen der Entwicklung neuer Lösungsansätze für komplexe gesellschaftliche, ökologische und ökonomische Herausforderungen.</li>
+                        <li><strong>Digitale Infrastruktur</strong> – Unter Investitionen in digitale Infrastruktur fallen der Ausbau von Netzen, Rechenzentren, Hard- und Softwarelösungen sowie digitale Plattformen. Sie ermöglichen den Zugang zu Information, die Effizienzsteigerung von Prozessen und die digitale Teilhabe breiter Bevölkerungsgruppen.</li>
+                        <li><strong>Verkehrsinfrastruktur</strong> – Investitionen in Verkehrsinfrastruktur betreffen den Erhalt und die Modernisierung von Straßen, Schienen, Wasserwegen und öffentlichem Nah- und Fernverkehr. Ziel ist es, Mobilität als zentrale Voraussetzung für wirtschaftliche Entwicklung, soziale Teilhabe und ökologische Nachhaltigkeit sicherzustellen.</li>
+                        <li><strong>Soziale Infrastruktur</strong> – Diese Investitionskategorie umfasst Einrichtungen und Angebote, die soziale Teilhabe und Daseinsvorsorge gewährleisten, darunter Kindertagesstätten, Schulen, Gesundheits- und Pflegeeinrichtungen sowie Freizeit- und Kulturstätten. Sie tragen zur Herstellung gleichwertiger Lebensverhältnisse und zur Stärkung gesellschaftlicher Kohäsion bei.</li>
+                        <li><strong>Öffentliche Verwaltung</strong> – Investitionen in öffentliche Verwaltung beziehen sich auf die Modernisierung staatlicher Institutionen, ihre digitale Transformation und die Sicherung organisatorischer Leistungsfähigkeit. Ziel ist eine effiziente, transparente und bürgernahe Erfüllung öffentlicher Aufgaben als Fundament demokratischer Steuerungs- und Entscheidungsprozesse.</li>
                     </ul>
-                    <p className={styles.nachhaltigkeitText}>
-                        Der besondere Wert dieser Investitionen zeigt sich in ihren <strong>positiven Nebenwirkungen</strong>: Jede dieser Maßnahmen unterstützt nicht nur die direkte Entwicklung in ihrem Bereich, sondern leistet auch einen Beitrag zum <strong>Umweltschutz</strong>. Bildung fördert Bewusstsein, Forschung ermöglicht neue ökologische Technologien, digitale Infrastruktur reduziert unnötige Wege, und eine nachhaltige Verkehrsinfrastruktur senkt Emissionen.
-                    </p>
-                    <p className={styles.nachhaltigkeitText}>
-                        So verstehen wir Investitionen nicht nur als Mittel, um ökonomische Stärke aufzubauen, sondern auch als Instrument, um eine lebenswerte Zukunft zu sichern. Investitionen in diesen Bereichen sind Investitionen in Menschen, in Wissen, in Vernetzung – und letztlich in den Schutz unserer Umwelt.
-                    </p>
+                    <hr />
                     <h3 className={styles.nachhaltigkeitSubtitle}>Unsere Definition von Nachhaltigkeit</h3>
                     <p className={styles.nachhaltigkeitText}>
-                        Nachhaltigkeit verstehen wir als ein Prinzip, das über kurzfristige Trends hinausgeht und die Grundlage für verantwortungsvolles Handeln bildet. Für uns beginnt Nachhaltigkeit mit einem klaren Anspruch an <strong>Qualität</strong>. Qualität zeigt sich nicht allein im Moment der Nutzung, sondern über den gesamten Lebenszyklus hinweg.
+                        Nachhaltigkeit verstehen wir als Prinzip, das über kurzfristige Trends hinausgeht und die Grundlage für verantwortungsvolles Handeln bildet. Sie beginnt mit einem klaren Anspruch an <strong>Qualität</strong>, die sich über den gesamten Lebenszyklus von Projekten und Strukturen erstreckt.
                     </p>
                     <p className={styles.nachhaltigkeitText}>
-                        Drei Aspekte stehen dabei im Vordergrund: <strong>Funktionalität, Durabilität und Kompatibilität</strong>.
+                        Drei Dimensionen stehen dabei im Vordergrund:
                     </p>
                     <ul className={styles.nachhaltigkeitList}>
-                        <li><strong>Funktionalität</strong> bedeutet, dass Produkte und Lösungen ihren Zweck zuverlässig erfüllen und den Menschen einen echten Mehrwert bieten.</li>
-                        <li><strong>Durabilität</strong> beschreibt die Langlebigkeit. Was robust ist und lange genutzt werden kann, spart Ressourcen und vermeidet Abfall.</li>
-                        <li><strong>Kompatibilität</strong> schließlich sorgt dafür, dass Systeme miteinander harmonieren, weiterentwickelt und in bestehende Strukturen eingebunden werden können, anstatt sie zu verdrängen.</li>
+                        <li><strong>Funktionalität</strong> - Lösungen müssen zuverlässig wirken und einen echten Mehrwert bieten.</li>
+                        <li><strong>Durabilität</strong>– Robuste, langlebige Strukturen schonen Ressourcen und reduzieren Abfall.</li>
+                        <li><strong>Kompatibilität</strong> – Systeme sollen miteinander harmonieren, weiterentwickelt und in bestehende Strukturen eingebunden werden können.</li>
                     </ul>
                     <p className={styles.nachhaltigkeitText}>
-                        Doch Nachhaltigkeit erschöpft sich nicht in technischen oder materiellen Eigenschaften. Sie ist immer auch ein gesellschaftliches und ökologisches Versprechen. Deshalb achten wir auf eine <strong>ökologisch nachhaltige Ausrichtung</strong>, die Ressourcen schont, Emissionen reduziert und die natürlichen Lebensgrundlagen bewahrt. Gleichzeitig ist uns eine <strong>soziale Gerechtigkeit</strong> wichtig, die faire Arbeitsbedingungen, respektvolle Zusammenarbeit und einen gleichberechtigten Zugang zu Chancen sicherstellt.
-                    </p>
-                    <p className={styles.nachhaltigkeitText}>
-                        In unserem Verständnis ist Nachhaltigkeit somit ein umfassendes Konzept: Es verbindet Qualität mit Verantwortung und schafft die Basis für eine Zukunft, in der wirtschaftlicher Erfolg, ökologischer Schutz und gesellschaftliche Teilhabe kein Widerspruch sind, sondern sich gegenseitig stärken.
+                        Nachhaltigkeit ist somit ein umfassendes Konzept: Sie verbindet Qualität mit Verantwortung
+                        und schafft die Basis für eine Zukunft, in der ökonomische Stärke, ökologischer Schutz und
+                        gesellschaftliche Teilhabe sich gegenseitig stärken.
                     </p>
                 </div>
             </section>
