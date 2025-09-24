@@ -107,14 +107,7 @@ const PublicInvestments: React.FC = () => {
                 <div className={styles.nachhaltigkeitContainer}>
                     <h2 className={styles.nachhaltigkeitTitle}>Was sind nachhaltige Investitionen?</h2>
                     <p className={styles.nachhaltigkeitText}>
-                        Nachhaltige Investitionen sind Investitionen, die auf <strong>Qualität</strong> im umfassenden Sinn
-                        ausgerichtet sind. Sie schaffen Strukturen, die <strong>funktional</strong> zuverlässig wirken, <strong>dauerhaft</strong>
-                        bestehen und <strong>kompatibel</strong> mit bestehenden Systemen sind.
-                        Über diese messbaren Kriterien hinaus können nachhaltige Investitionen zugleich
-                        <strong>ökologisch</strong> wirksam sein – etwa durch Ressourcenschonung und Emissionsminderung –
-                        und <strong>sozial förderlich</strong>, indem sie Teilhabe und faire Bedingungen unterstützen. Diese Effekte
-                        verstehen wir als wertvolle Ergänzungen, auch wenn sie nicht in eigenen Kategorien erfasst
-                        werden.
+                        Nachhaltige Investitionen sind Investitionen, die auf <strong>Qualität</strong> im umfassenden Sinn ausgerichtet sind. Sie schaffen Strukturen, die <strong>funktional</strong> zuverlässig wirken, <strong>dauerhaft</strong> bestehen und <strong>kompatibel</strong> mit bestehenden Systemen sind. Über diese messbaren Kriterien hinaus können nachhaltige Investitionen zugleich <strong>ökologisch</strong> wirksam sein – etwa durch Ressourcenschonung und Emissionsminderung – und <strong>sozial förderlich</strong>, indem sie Teilhabe und faire Bedingungen unterstützen. Diese Effekte verstehen wir als wertvolle Ergänzungen, auch wenn sie nicht in eigenen Kategorien erfasst werden.
                     </p>
                     <h3 className={styles.nachhaltigkeitSubtitle}>Unsere Definition von Investitionen</h3>
                     <p className={styles.nachhaltigkeitText}>
